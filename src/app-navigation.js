@@ -1,28 +1,28 @@
 export const navigation = [
   {
-    text: 'Thống kê',
+    text: 'Dashboard',
     path: '/dashboard',
-    icon: 'fa-regular fa-chart-line-up'
+    icon: 'fa-regular fa-chart-line-up',
   },
   {
-    text: 'Đặt đơn',
+    text: 'Orders',
     icon: 'fa-regular fa-pot-food',
     items: [
       {
-        text: 'Danh sách',
+        text: 'Orders',
         icon: 'fa-regular fa-cart-shopping',
-        path: '/orders'
-      }
-    ]
+        path: '/orders',
+      },
+    ],
   },
   {
-    text: 'Hóa đơn',
+    text: 'Paymaent',
     path: '/payment',
-    icon: 'fa-regular fa-money-check-dollar-pen'
-  }, 
+    icon: 'fa-regular fa-money-check-dollar-pen',
+  },
   {
-    text: 'Cài đặt',
+    text: 'Setting',
     path: '/setting',
-    icon: 'fa-regular fa-gears'
-  }
-];
+    icon: 'fa-regular fa-gears',
+  },
+]
