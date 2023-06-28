@@ -1,30 +1,32 @@
-import React, { useMemo } from 'react';
-import { useNavigate } from "react-router-dom";
-import ContextMenu, { Position } from 'devextreme-react/context-menu';
-import List from 'devextreme-react/list';
-import { useAuth } from '../../contexts/auth';
-import './UserPanel.scss';
+import { useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
+import ContextMenu, { Position } from 'devextreme-react/context-menu'
+import List from 'devextreme-react/list'
+import { useAuth } from '../../contexts/auth'
+import './UserPanel.scss'
 
-
-export default function UserPanel({ menuMode }) {
-  const { user, signOut } = useAuth();
-  const navigate = useNavigate();
+export default function UserPanel({ menuMode }: any) {
+  const { user, signOut } = useAuth()
+  const navigate = useNavigate()
 
   function navigateToProfile() {
-    navigate("/profile");
+    navigate('/profile')
   }
-  const menuItems = useMemo(() => ([
-    {
-      text: 'Profile',
-      icon: 'user',
-      onClick: navigateToProfile
-    },
-    {
-      text: 'Logout',
-      icon: 'runner',
-      onClick: signOut
-    }
-  ]), [signOut]);
+  const menuItems = useMemo(
+    () => [
+      {
+        text: 'Profile',
+        icon: 'user',
+        onClick: navigateToProfile,
+      },
+      {
+        text: 'Logout',
+        icon: 'runner',
+        onClick: signOut,
+      },
+    ],
+    [signOut]
+  )
   return (
     <div className={'user-panel'}>
       <div className={'user-info'}>
@@ -32,9 +34,10 @@ export default function UserPanel({ menuMode }) {
           <div
             style={{
               background: `url(${user.avatarUrl}) no-repeat #fff`,
-              backgroundSize: 'cover'
+              backgroundSize: 'cover',
             }}
-            className={'user-image'} />
+            className={'user-image'}
+          />
         </div>
         <div className={'user-name'}>{user.email}</div>
       </div>
@@ -54,5 +57,5 @@ export default function UserPanel({ menuMode }) {
         <List className={'dx-toolbar-menu-action'} items={menuItems} />
       )}
     </div>
-  );
+  )
 }

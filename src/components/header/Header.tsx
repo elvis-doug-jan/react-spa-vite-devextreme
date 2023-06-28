@@ -1,12 +1,10 @@
-import React from 'react';
-import Toolbar, { Item } from 'devextreme-react/toolbar';
-import Button from 'devextreme-react/button';
-import UserPanel from '../user-panel/UserPanel';
-import './Header.scss';
-import { Template } from 'devextreme-react/core/template';
+import Toolbar, { Item } from 'devextreme-react/toolbar'
+import Button from 'devextreme-react/button'
+import UserPanel from '../user-panel/UserPanel'
+import './Header.scss'
+import { Template } from 'devextreme-react/core/template'
 
-
-export default function Header({ menuToggleEnabled, title, toggleMenu }) {
+export default function Header({ menuToggleEnabled, title, toggleMenu }: any) {
   return (
     <header className={'header-component'}>
       <Toolbar className={'header-toolbar'}>
@@ -43,4 +41,5 @@ export default function Header({ menuToggleEnabled, title, toggleMenu }) {
         </Template>
       </Toolbar>
     </header>
-)}
+  )
+}
