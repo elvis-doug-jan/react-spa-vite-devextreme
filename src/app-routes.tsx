@@ -3,14 +3,32 @@ import { Navigate } from 'react-router-dom'
 
 const routes = [
   {
-    path: '/dashboard',
+    path: '/home',
     element: (
-      <WrapLazyRoute LazyElement={lazy(() => import('./pages/home/home'))} />
+      <WrapLazyRoute LazyElement={lazy(() => import('./pages/home/'))} />
     ),
   },
   {
     path: '*',
-    element: <Navigate to="/orders" />,
+    element: <Navigate to="/home" />,
+  },
+  {
+    path: '/page1',
+    element: (
+      <WrapLazyRoute LazyElement={lazy(() => import('./pages/page1/'))} />
+    ),
+  },
+  {
+    path: '/page2',
+    element: (
+      <WrapLazyRoute LazyElement={lazy(() => import('./pages/page2/'))} />
+    ),
+  },
+  {
+    path: '/page3',
+    element: (
+      <WrapLazyRoute LazyElement={lazy(() => import('./pages/page3/'))} />
+    ),
   },
 ]
 

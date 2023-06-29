@@ -1,36 +1,35 @@
-import 'devextreme/dist/css/dx.common.css';
-import './themes/generated/theme.base.css';
-import './themes/generated/theme.additional.css';
-import './themes/customs/devextreme.override.scss';
-import './dx-styles.scss';
-import './assets/styles/foc-style.scss';
+import 'devextreme/dist/css/dx.common.css'
+import './themes/generated/theme.base.css'
+import './themes/generated/theme.additional.css'
+import './themes/customs/devextreme.override.scss'
+import './dx-styles.scss'
+import './assets/styles/foc-style.scss'
 
-import React from 'react';
-import { HashRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom'
 
-import LoadPanel from 'devextreme-react/load-panel';
-import { NavigationProvider } from './contexts/navigation';
-import { AuthProvider, useAuth } from './contexts/auth';
-import { useScreenSizeClass } from './utils/media-query';
-import Content from './Content';
-import UnauthenticatedContent from './UnauthenticatedContent';
+import LoadPanel from 'devextreme-react/load-panel'
+import { NavigationProvider } from './contexts/navigation'
+import { AuthProvider, useAuth } from './contexts/auth'
+import { useScreenSizeClass } from './utils/media-query'
+import Content from './Content'
+import UnauthenticatedContent from './UnauthenticatedContent'
 
 function App() {
-  const { user, loading } = useAuth();
+  const { user, loading } = useAuth()
 
   if (loading) {
-    return <LoadPanel visible={true} />;
+    return <LoadPanel visible={true} />
   }
 
   if (user) {
-    return <Content />;
+    return <Content />
   }
 
-  return <UnauthenticatedContent />;
+  return <UnauthenticatedContent />
 }
 
 export default function Root() {
-  const screenSizeClass = useScreenSizeClass();
+  const screenSizeClass = useScreenSizeClass()
 
   return (
     <Router>
@@ -42,5 +41,5 @@ export default function Root() {
         </NavigationProvider>
       </AuthProvider>
     </Router>
-  );
+  )
 }

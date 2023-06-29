@@ -1,5 +1,4 @@
 const appInfo = {
-    title: 'Food Order'
-};
-export default appInfo;
-
+  title: 'React Vite Starter',
+}
+export default appInfo

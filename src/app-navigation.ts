@@ -1,28 +1,28 @@
 export const navigation = [
   {
-    text: 'Dashboard',
-    path: '/dashboard',
-    icon: 'fa-regular fa-chart-line-up',
+    text: 'Home',
+    path: '/home',
+    icon: 'fa-regular fa-chart-line-up'
   },
   {
-    text: 'Orders',
+    text: 'Page1',
     icon: 'fa-regular fa-pot-food',
     items: [
       {
-        text: 'Orders',
+        text: 'Page1',
         icon: 'fa-regular fa-cart-shopping',
-        path: '/orders',
-      },
-    ],
+        path: '/page1'
+      }
+    ]
   },
   {
-    text: 'Paymaent',
-    path: '/payment',
-    icon: 'fa-regular fa-money-check-dollar-pen',
+    text: 'Page2',
+    path: '/page2',
+    icon: 'fa-regular fa-money-check-dollar-pen'
   },
   {
-    text: 'Setting',
-    path: '/setting',
-    icon: 'fa-regular fa-gears',
-  },
+    text: 'Page3',
+    path: '/page3',
+    icon: 'fa-regular fa-gears'
+  }
 ]

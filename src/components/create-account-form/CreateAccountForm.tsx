@@ -1,5 +1,4 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'
 import Form, {
   Item,
   Label,
@@ -7,41 +6,45 @@ import Form, {
   ButtonOptions,
   RequiredRule,
   CustomRule,
-  EmailRule
-} from 'devextreme-react/form';
-import notify from 'devextreme/ui/notify';
-import LoadIndicator from 'devextreme-react/load-indicator';
-import { createAccount } from '../../api/auth';
+  EmailRule,
+} from 'devextreme-react/form'
+import notify from 'devextreme/ui/notify'
+import LoadIndicator from 'devextreme-react/load-indicator'
+import { createAccount } from '../../api/auth'
 
-import './CreateAccountForm.scss';
+import './CreateAccountForm.scss'
+import { FormEvent, useCallback, useRef, useState } from 'react'
 
 export default function CreateAccountForm() {
-  const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
-  const formData = useRef({ email: '', password: '' });
+  const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
+  const formData = useRef({ email: '', password: '' })
 
-  const onSubmit = useCallback(async (e) => {
-    e.preventDefault();
-    const { email, password } = formData.current;
-    setLoading(true);
+  const onSubmit = useCallback(
+    async (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault()
+      const { email, password } = formData.current
+      setLoading(true)
 
-    const result = await createAccount(email, password);
-    setLoading(false);
+      const result = await createAccount(email, password)
+      setLoading(false)
 
-    if (result.isOk) {
-      navigate('/login');
-    } else {
-      notify(result.message, 'error', 2000);
-    }
-  }, [navigate]);
+      if (result.isOk) {
+        navigate('/login')
+      } else {
+        notify(result.message, 'error', 2000)
+      }
+    },
+    [navigate]
+  )
 
   const confirmPassword = useCallback(
-    ({ value }) => value === formData.current.password,
+    ({ value }: { value: string }) => value === formData.current.password,
     []
-  );
+  )
 
   return (
-    <form className={'create-account-form'} onSubmit={onSubmit}>
+    <form className={'create-account-form'} onSubmit={(e) => onSubmit(e)}>
       <Form formData={formData.current} disabled={loading}>
         <Item
           dataField={'email'}
@@ -73,8 +76,10 @@ export default function CreateAccountForm() {
           <Label visible={false} />
         </Item>
         <Item>
-          <div className='policy-info'>
-            By creating an account, you agree to the <Link to="#">Terms of Service</Link> and <Link to="#">Privacy Policy</Link>
+          <div className="policy-info">
+            By creating an account, you agree to the{' '}
+            <Link to="#">Terms of Service</Link> and{' '}
+            <Link to="#">Privacy Policy</Link>
           </div>
         </Item>
         <ButtonItem>
@@ -84,11 +89,11 @@ export default function CreateAccountForm() {
             useSubmitBehavior={true}
           >
             <span className="dx-button-text">
-              {
-                loading
-                  ? <LoadIndicator width={'24px'} height={'24px'} visible={true} />
-                  : 'Create a new account'
-              }
+              {loading ? (
+                <LoadIndicator width={'24px'} height={'24px'} visible={true} />
+              ) : (
+                'Create a new account'
+              )}
             </span>
           </ButtonOptions>
         </ButtonItem>
@@ -99,9 +104,21 @@ export default function CreateAccountForm() {
         </Item>
       </Form>
     </form>
-  );
+  )
 }
 
-const emailEditorOptions = { stylingMode: 'filled', placeholder: 'Email', mode: 'email' };
-const passwordEditorOptions = { stylingMode: 'filled', placeholder: 'Password', mode: 'password' };
-const confirmedPasswordEditorOptions = { stylingMode: 'filled', placeholder: 'Confirm Password', mode: 'password' };
+const emailEditorOptions = {
+  stylingMode: 'filled',
+  placeholder: 'Email',
+  mode: 'email',
+}
+const passwordEditorOptions = {
+  stylingMode: 'filled',
+  placeholder: 'Password',
+  mode: 'password',
+}
+const confirmedPasswordEditorOptions = {
+  stylingMode: 'filled',
+  placeholder: 'Confirm Password',
+  mode: 'password',
+}
